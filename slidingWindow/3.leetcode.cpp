@@ -19,6 +19,12 @@ public:
 
 //METHOD 2 (SLIDING WINDOW)
 
+// • Expand using right.
+// • Add current character to frequency map.
+// • If duplicate appears, shrink from left until valid.
+// • Every valid window is a candidate answer.
+// • Never restart the window—slide it.
+
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
