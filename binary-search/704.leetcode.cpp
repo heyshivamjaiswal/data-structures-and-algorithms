@@ -1,3 +1,5 @@
+//Type 1
+
 //Iterative 
 //complexity is O(logN), where N = size of the given array.
 
@@ -45,5 +47,46 @@ public:
     // Public function to initiate search
     int search(vector& nums, int target) {
         return binarySearch(nums, 0, nums.size() - 1, target);
+    }
+};
+
+//-------------------------------------------------//
+//Type 2
+
+class Solution {
+public:
+
+    bool canDo(vector<int>& nums, int x) {
+
+        // Check whether x is a valid answer.
+
+        return true;
+    }
+
+    int solve(vector<int>& nums) {
+
+        int low = /* smallest possible answer */;
+        int high = /* largest possible answer */;
+
+        while(low < high) {
+
+            int mid = low + (high - low) / 2;
+
+            if(canDo(nums, mid)) {
+
+                // mid works.
+                // Search for a smaller valid answer.
+                high = mid; //for bigger (maximums) low = mid
+
+            }
+            else {
+
+                // mid doesn't work.
+                // Need a larger answer.
+                low = mid + 1; //mid-1
+            }
+        }
+
+        return low;
     }
 };
