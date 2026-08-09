@@ -1,3 +1,18 @@
+// 1539 = Kth Missing Positive
+
+// At index i:
+// missing = arr[i] - (i + 1)
+
+// missing < k
+// → not enough missing
+// → go RIGHT
+
+// missing >= k
+// → enough missing
+// → go LEFT
+
+// After binary search:
+// answer = left + k
 
 
 class Solution {
