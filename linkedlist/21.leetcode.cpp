@@ -1,4 +1,15 @@
+// dummy = fixed starting point
+// temp  = last node of result
 
+// Compare l1/l2
+// ↓
+// take smaller
+// ↓
+// temp->next = smaller
+// ↓
+// move that list
+// ↓
+// temp = temp->next
 
 class Solution {
 public:
