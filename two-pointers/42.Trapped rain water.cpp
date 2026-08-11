@@ -29,6 +29,7 @@ public:
 };
 
 
+
 //Method 2
 // • Water above one bar = min(leftMax, rightMax) - height.
 // • Precompute leftMax[] and rightMax[].
@@ -53,26 +54,56 @@ public:
     int trap(vector<int>& height) {
         int n = height.size();
 
-        vector<int>leftMax(n);
-        vector<int>rightMax(n);
+        // leftMax[i] = tallest bar from index 0 to i
+        vector<int> leftMax(n);
 
-        //prefix
+        // rightMax[i] = tallest bar from index i to n-1
+        vector<int> rightMax(n);
+
+        // -------------------------
+        // Build Prefix Maximum Array
+        // -------------------------
+
+        // The tallest bar seen till index 0 is the first bar itself.
         leftMax[0] = height[0];
-        for(int i = 1 ; i< n; i++){
-            leftMax[i] = max(leftMax[i-1] , height[i]);
+
+        // For every index, either:
+        // 1. the previous tallest bar remains the tallest, or
+        // 2. the current bar becomes the new tallest.
+        for (int i = 1; i < n; i++) {
+            leftMax[i] = max(leftMax[i - 1], height[i]);
         }
 
-        //suffix 
-        rightMax[n-1] = height[n-1];
-          for(int i=n-2;i>=0;i--){
-        rightMax[i] = max(rightMax[i+1], height[i]);
+        // -------------------------
+        // Build Suffix Maximum Array
+        // -------------------------
+
+        // The tallest bar from the last index to itself
+        // is the last bar.
+        rightMax[n - 1] = height[n - 1];
+
+        // Traverse from right to left.
+        // At every position, keep track of the tallest bar
+        // seen so far from the right.
+        for (int i = n - 2; i >= 0; i--) {
+            rightMax[i] = max(rightMax[i + 1], height[i]);
         }
 
         int totalWater = 0;
 
-        for(int i = 0; i<n; i++){
+        // -------------------------
+        // Calculate trapped water
+        // -------------------------
+
+        // Water level at each index is limited by
+        // the shorter of the tallest left wall
+        // and the tallest right wall.
+        // Remove the current bar's height to get
+        // the amount of trapped water.
+        for (int i = 0; i < n; i++) {
             totalWater += min(leftMax[i], rightMax[i]) - height[i];
         }
+
         return totalWater;
     }
 };

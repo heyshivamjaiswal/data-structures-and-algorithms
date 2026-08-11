@@ -1,4 +1,4 @@
-// METHOD 1 brute force
+// METHOD 1 brute force (generate all possible arrays)
 
 class Solution {
 public:
