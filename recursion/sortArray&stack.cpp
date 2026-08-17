@@ -151,3 +151,11 @@ int main() {
 
     return 0;
 }
+
+//Template 
+int temp = st.top();
+st.pop();
+
+recursiveCall();
+
+st.push(temp);
