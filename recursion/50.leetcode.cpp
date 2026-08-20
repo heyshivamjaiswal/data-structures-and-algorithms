@@ -1,3 +1,28 @@
+//Template 
+
+                  n
+                  |
+          ┌───────┴───────┐
+          ↓               ↓
+       negative?        non-negative
+          |                 |
+       invert x             |
+       make n positive      |
+          |                 |
+          └────────┬────────┘
+                   ↓
+                n == 0?
+                   |
+          ┌────────┴────────┐
+          ↓                 ↓
+        return 1           n > 0
+                            |
+                       even or odd?
+                       /          \
+                    EVEN          ODD
+                      |             |
+                   half²        half² × x
+
 
 class Solution {
 public:
