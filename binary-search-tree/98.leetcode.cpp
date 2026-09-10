@@ -29,3 +29,12 @@ public:
         return validBST(root, LONG_MIN, LONG_MAX);
     }
 };
+
+
+
+                         10
+                       /    \
+                 (-∞,10)   (10,+∞)
+                    5          15
+                  /   \       /  \
+            (-∞,5) (5,10) (10,15) (15,+∞)
