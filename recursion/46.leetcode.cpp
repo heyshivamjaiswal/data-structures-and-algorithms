@@ -39,3 +39,79 @@ void solve(vector<int>& nums,
        return ans; 
     }
 };
+
+
+
+
+
+
+// ## LeetCode 46 — Permutations
+
+// ### Intuition
+
+// We have empty positions:
+
+// [_, _, _]
+
+// At every position:
+// → try every UNUSED number.
+
+// Example:
+
+// [_,_,_]
+//    ↓
+// choose 1
+
+// [1,_,_]
+//    ↓
+// choose 2
+
+// [1,2,_]
+//    ↓
+// choose 3
+
+// [1,2,3]
+
+// Save it.
+
+// Then BACKTRACK:
+// remove 3
+// remove 2
+// try 3 instead
+
+// → [1,3,2]
+
+// ### Rules
+
+// 1. Try every number at every level.
+
+// 2. A number cannot be used twice
+//    in the same permutation.
+//    → used[]
+
+// 3. Complete path:
+//    path.size() == nums.size()
+//    → save path.
+
+// 4. After recursion:
+//    undo the choice.
+
+// ### Pattern
+
+// choose
+// ↓
+// mark used
+// ↓
+// recurse
+// ↓
+// unmark
+// ↓
+// pop
+
+// ### Memory Trigger
+
+// PERMUTATION =
+// "Who goes in this position?"
+
+// Not:
+// "Should I take this number?"
